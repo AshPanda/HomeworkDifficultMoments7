@@ -17,10 +17,46 @@ virtual string GetAllInfo() = 0;
 */
 
 #include <iostream>
+#include <numeric>
+#include <fstream>
+#include <vector>
+#include <optional>
+
+
+//Task 1 - conan protobuf установлен, но при попытке запуска protobuf возникает ошибка
+//Task #2
+class FullName
+{
+	protected:
+		std::string a;
+		std::string b;
+		std::optional<std::string> c;
+public:
+	FullName(std::string Name, std::string Surname, std::string Patronymic) : a(Name), b(Surname), c(Patronymic) {	}
+	std::string getName() const { return a; }
+	std::string getSurname() const { return b; }
+	std::optional<std::string> getPatronymic() const{ return c; }
+
+	void info() {
+		printf("%s | %s | %s\n", getName().c_str(), getSurname().c_str(), getPatronymic());
+	}
+};
+class Student
+{
+protected:
+	std::string a;
+	std::vector<int> grade;
+	std::vector<int> averageGrade;
+public:
+	Student(std::string Name, std::vector<int> Grade, std::vector<int> AverageGrade) : a(Name), grade(Grade), averageGrade(averageGrade) {	}
+};
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	FullName s0("Kevin", "Malkin", " ");
+	s0.info();
+
 }
 
 
